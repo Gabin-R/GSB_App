@@ -1,6 +1,6 @@
 package gsb.modele;
 
-public class Médicament {
+public class Medicament {
 	
 	protected String depotLegal;
 	protected String nomCommercial;
@@ -11,7 +11,7 @@ public class Médicament {
 	protected String codeFamille;
 	protected String libelleFamille;
 	
-	public void Medicament(String unDepotLegal, String unNomCommercial, String uneComposition, String unEffet, String uneContreIndication, float unPrixEchantillon, String unCodeFamille, String unLibelleFamille) {
+	public Medicament(String unDepotLegal, String unNomCommercial, String uneComposition, String unEffet, String uneContreIndication, float unPrixEchantillon, String unCodeFamille, String unLibelleFamille) {
 		this.depotLegal = unDepotLegal;
 		this.nomCommercial = unNomCommercial;
 		this.composition = uneComposition;
