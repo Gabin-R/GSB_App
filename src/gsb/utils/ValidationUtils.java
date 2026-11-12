@@ -47,7 +47,7 @@ public class ValidationUtils {
     	return resultat;
     }
     
-    public boolean estUnEntier(String chaine) {
+    public static boolean isInt(String chaine) {
 		try {
 			Integer.parseInt(chaine);
 		} catch (NumberFormatException e){
@@ -55,6 +55,35 @@ public class ValidationUtils {
 		}
  
 		return true;
+	}
+    
+    public static boolean isString(String chaine) {
+		try {
+			Integer.parseInt(chaine);
+		} catch (NumberFormatException e){
+			return true;
+		}
+ 
+		return false;
+	}
+    
+    public static boolean isFloat(String chaine) {
+		try {
+			Float.parseFloat(chaine);
+		} catch (NumberFormatException e){
+			return false;
+		}
+ 
+		return true;
+	}
+    
+    public static boolean verifTailleMax(String chaine, int tailleMax) {
+    	if(0 < chaine.length() && chaine.length() <= tailleMax) {
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
 	}
     
 }

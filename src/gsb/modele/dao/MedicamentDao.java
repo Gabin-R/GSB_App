@@ -41,6 +41,15 @@ public class MedicamentDao {
 		return collectionDesMedicaments;
 	}
 	
+	public static int ajouterNouveauMedicament(String unDepotLegal, String unNomCommercial, String uneComposition, String unEffet, String uneContreIndication, float unPrixEchantillon, String unCodeFamille, String unLibelleFamille){
+		String requeteInsertion;
+		requeteInsertion = "INSERT INTO MEDICAMENT VALUES('"+unDepotLegal+"','"+unNomCommercial+"','"+uneComposition+"','"+unEffet+"','"+uneContreIndication+"','"+unPrixEchantillon+"','"+unCodeFamille+"','"+unLibelleFamille+"')";
+		int result = ConnexionMySql.execReqMaj(requeteInsertion);
+		ConnexionMySql.fermerConnexionBd();
+		return result;
+	}
+
+	
 	public static HashMap<String,Medicament> retournerDictionnaireDesMedicaments(){
 		HashMap<String, Medicament> diccoDesMedicaments = new HashMap<String, Medicament>();
 		ResultSet reqSelection = ConnexionMySql.execReqSelection("select MED_DEPOTLEGAL from MEDICAMENT");

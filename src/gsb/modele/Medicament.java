@@ -19,7 +19,7 @@ public class Medicament {
 		this.contreIndication = uneContreIndication;
 		this.prixEchantillon = unPrixEchantillon;
 		this.codeFamille = unCodeFamille;
-		this.libelleFamille = unCodeFamille;
+		this.libelleFamille = unLibelleFamille;
 	}
 
 	public String getDepotLegal() {
@@ -27,7 +27,7 @@ public class Medicament {
 	}
 
 	public void setDepotLegal(String depotLegal) {
-		this.depotLegal = depotLegal;
+		this.depotLegal = depotLegal.toUpperCase();
 	}
 
 	public String getNomCommercial() {
@@ -75,7 +75,7 @@ public class Medicament {
 	}
 
 	public void setCodeFamille(String codeFamille) {
-		this.codeFamille = codeFamille;
+		this.codeFamille = codeFamille.toUpperCase();
 	}
 
 	public String getLibelleFamille() {
