@@ -84,8 +84,8 @@ public class JIFMedicamentListeDic extends JInternalFrame implements ActionListe
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
    		if (source == JBafficherFiche){
-   			if (diccoMedicament.containsKey(JTcodeMedicament.getText())){
-   	   			Medicament unMedicament = diccoMedicament.get(JTcodeMedicament.getText());
+   			if (diccoMedicament.containsKey(JTcodeMedicament.getText().toUpperCase())){
+   	   			Medicament unMedicament = diccoMedicament.get(JTcodeMedicament.getText().toUpperCase());
    	   			fenetreContainer.ouvrirFenetre(new JIFMedicamentFiche(unMedicament));
    			}
    		}

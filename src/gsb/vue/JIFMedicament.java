@@ -4,8 +4,10 @@ import gsb.modele.Medicament;
 import gsb.service.MedicamentService;
 
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -17,7 +19,7 @@ import javax.swing.JButton;
  * TODO Pour changer le modeele de ce commentaire de type genere, allez :
  * Fenetre - Preferences - Java - Style de code - Modeles de code
  */
-public class JIFMedicament extends JInternalFrame  {
+public class JIFMedicament extends JInternalFrame implements ActionListener{
 	/**
 	 * Commentaire pour <code>serialVersionUID</code>
 	 */
@@ -56,7 +58,7 @@ public class JIFMedicament extends JInternalFrame  {
          JLcomposition = new JLabel("Composition");
          JLeffet = new JLabel("Effet");
          JLcontreIndication = new JLabel("Contre Indication");
-         JLprixEchantillon = new JLabel("Prix Echantillon");
+         JLprixEchantillon = new JLabel("(?) Prix Echantillon");
          JLcodeFamille = new JLabel("Code Famille");
          JLlibelleFamille = new JLabel("Libellé Famille");
          
@@ -69,6 +71,9 @@ public class JIFMedicament extends JInternalFrame  {
          JTprixEchantillon = new JTextField(20);
          JTcodeFamille = new JTextField(20);
          JTlibelleFamille = new JTextField(20);
+         
+         JLprixEchantillon.setToolTipText("Entrez la virgule en utilisant le point (ex : 3.14)");
+         JLprixEchantillon.setCursor(new Cursor(Cursor.HAND_CURSOR));
          
          pTexte.add(JLdepotLegal);
          pTexte.add(JTdepotLegal);
@@ -93,6 +98,8 @@ public class JIFMedicament extends JInternalFrame  {
          p.add(pBoutons);
          
          JBfermer = new JButton("Fermer");
+         JBfermer.addActionListener(this);
+         p.add(JBfermer);
          Container contentPane = getContentPane();
          contentPane.add(p);
 
@@ -125,8 +132,7 @@ public class JIFMedicament extends JInternalFrame  {
     public void actionPerformed(ActionEvent evt) { 
 		Object source = evt.getSource();
    		if (source == JBfermer){
-
-   			//TODO : Fermeture avec le bouton Fermer (JBfermer).
+   			dispose();
 		}
 	}
 }
