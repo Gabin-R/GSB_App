@@ -97,9 +97,6 @@ public class JIFMedicament extends JInternalFrame implements ActionListener{
          p.add(pTexte);
          p.add(pBoutons);
          
-         JBfermer = new JButton("Fermer");
-         JBfermer.addActionListener(this);
-         p.add(JBfermer);
          Container contentPane = getContentPane();
          contentPane.add(p);
 
@@ -131,8 +128,5 @@ public class JIFMedicament extends JInternalFrame implements ActionListener{
     
     public void actionPerformed(ActionEvent evt) { 
 		Object source = evt.getSource();
-   		if (source == JBfermer){
-   			dispose();
-		}
 	}
 }

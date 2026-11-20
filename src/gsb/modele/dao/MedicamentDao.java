@@ -66,4 +66,42 @@ public class MedicamentDao {
 		return diccoDesMedicaments;
 	}
 	
+	public static ArrayList<String> listerFamilleMedic(){
+		ArrayList<String> libelleFamilles = new ArrayList<String>();
+		ResultSet reqSelection = ConnexionMySql.execReqSelection("select FAM_CODE,FAM_LIBELLE from MEDICAMENT group by FAM_LIBELLE");
+		try{
+		while (reqSelection.next()) {
+			String codeMedicament = reqSelection.getString(2);
+		    libelleFamilles.add(codeMedicament);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("erreur selectionnerFamilleMedic()");
+		}
+		return libelleFamilles;
+	}
+
+	public static HashMap<String,Medicament> selectionnerFamilleMedic(String libelleFam){
+		HashMap<String, Medicament> diccoDesMedicaments = new HashMap<String, Medicament>();
+		ResultSet reqSelectionCount = ConnexionMySql.execReqSelection("select COUNT(*) from MEDICAMENT where FAM_LIBELLE='"+libelleFam+"';");
+		if(reqSelectionCount == null) {
+	    	return null;
+	    }
+		ResultSet reqSelection = ConnexionMySql.execReqSelection("select * from MEDICAMENT where FAM_LIBELLE='"+libelleFam+"';");
+		try{
+			
+			while (reqSelection.next()) {
+				String codeMedicament = reqSelection.getString(1);
+			    diccoDesMedicaments.put(codeMedicament, MedicamentDao.rechercher(codeMedicament));
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("erreur selectionnerFamilleMedic()");
+		}
+		return diccoDesMedicaments;
+	}
+
+	
 }

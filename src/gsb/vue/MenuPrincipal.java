@@ -31,7 +31,9 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 	protected JMenu mMedecins;
 	protected JMenu mMedicaments;
 
-	JMenu mVisites;
+	protected JMenu mVisites;
+	
+	protected JMenu mVisiteurs;
 
 	/**
 	 * 
@@ -65,18 +67,33 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		JMenuItem mE2 = new JMenuItem("Ajout Medicaments");
 		mE2.addActionListener(this);
 		mMedicaments.add(mE2);
+		JMenuItem mE3 = new JMenuItem("Familles Medicaments");
+		mE3.addActionListener(this);
+		mMedicaments.add(mE3);
 
 		mVisites = new JMenu("Visites");
 		JMenuItem mA1 = new JMenuItem("Consultation Visite");
-		mE1.addActionListener(this); // installation d'un ecouteur d'action
+		mA1.addActionListener(this); // installation d'un ecouteur d'action
 		mVisites.add(mA1);
 		JMenuItem mA2 = new JMenuItem("Ajout Visite");
 		mA2.addActionListener(this);
 		mVisites.add(mA2);
+		
+		mVisiteurs = new JMenu("Visiteurs");
+		JMenuItem mB1 = new JMenuItem("Liste Visiteurs");
+		mB1.addActionListener(this); // installation d'un ecouteur d'action
+		mVisiteurs.add(mB1);
+		JMenuItem mB2 = new JMenuItem("Fiche Visiteur");
+		mB2.addActionListener(this);
+		mVisiteurs.add(mB2);
+		JMenuItem mB3 = new JMenuItem("Ajout Visiteur");
+		mB2.addActionListener(this);
+		mVisiteurs.add(mB3);
 
 		mbar.add(mMedecins);
 		mbar.add(mMedicaments);
 		mbar.add(mVisites);
+		mbar.add(mVisiteurs);
 		setJMenuBar(mbar);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -100,6 +117,9 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 			}
 			else if(ChoixOption.equals("Ajout Medicaments")) {
 				ouvrirFenetre(new JIFMedicamentAjout());
+			}
+			else if(ChoixOption.equals("Familles Medicaments")) {
+				ouvrirFenetre(new JIFMedicamentsFamilles(this));
 			}
 
 		}

@@ -2,8 +2,12 @@
 package gsb.modele.dao;
 
 import gsb.modele.Localite;
+import gsb.modele.Medicament;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -26,6 +30,22 @@ public class LocaliteDao {
 			}
 		ConnexionMySql.fermerConnexionBd();
 		return uneLocalite;
+	}
+	
+	public static HashMap<String,Localite> retournerDictionnaireDesLocalites(){
+		HashMap<String, Localite> diccoDesLocalites = new HashMap<String, Localite>();
+		ResultSet reqSelection = ConnexionMySql.execReqSelection("select * from LOCALITE");
+		try{
+		while (reqSelection.next()) {
+			String codeLocalites = reqSelection.getString(1);
+		    diccoDesLocalites.put(codeLocalites, LocaliteDao.rechercher(codeLocalites));
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("erreur retournerDiccoDesMedicament()");
+		}
+		return diccoDesLocalites;
 	}
 
 }
