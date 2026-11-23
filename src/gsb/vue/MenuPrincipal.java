@@ -83,12 +83,9 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		JMenuItem mB1 = new JMenuItem("Liste Visiteurs");
 		mB1.addActionListener(this); // installation d'un ecouteur d'action
 		mVisiteurs.add(mB1);
-		JMenuItem mB2 = new JMenuItem("Fiche Visiteur");
+		JMenuItem mB2 = new JMenuItem("Ajout Visiteur");
 		mB2.addActionListener(this);
 		mVisiteurs.add(mB2);
-		JMenuItem mB3 = new JMenuItem("Ajout Visiteur");
-		mB2.addActionListener(this);
-		mVisiteurs.add(mB3);
 
 		mbar.add(mMedecins);
 		mbar.add(mMedicaments);
@@ -121,6 +118,13 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 			else if(ChoixOption.equals("Familles Medicaments")) {
 				ouvrirFenetre(new JIFMedicamentsFamilles(this));
 			}
+			else if(ChoixOption.equals("Liste Visiteurs")) {
+				ouvrirFenetre(new JIFVisiteurListeDic(this));
+			}
+			else if(ChoixOption.equals("Ajout Visiteur")) {
+				ouvrirFenetre(new JIFVisiteurAjout());
+			}
+
 
 		}
 

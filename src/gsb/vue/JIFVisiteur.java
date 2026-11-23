@@ -11,6 +11,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 
 /**
@@ -51,7 +52,7 @@ public class JIFVisiteur extends JInternalFrame implements ActionListener{
     public JIFVisiteur() {
     	p = new JPanel();  // panneau principal de la fenetre
         pBoutons = new JPanel();    // panneau supportant les boutons
-        pTexte = new JPanel(new GridLayout(8,2));
+        pTexte = new JPanel(new GridLayout(12,2));
     	
     	 JLmatricule = new JLabel("Matricule");
          JLnom = new JLabel("Nom");

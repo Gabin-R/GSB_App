@@ -45,8 +45,6 @@ public class JIFMedicament extends JInternalFrame implements ActionListener{
     protected JTextField JTprixEchantillon;
     protected JTextField JTcodeFamille;
     protected JTextField JTlibelleFamille;
-    
-    protected JButton JBfermer;
 	
     public JIFMedicament() {
     	p = new JPanel();  // panneau principal de la fenetre
@@ -91,7 +89,7 @@ public class JIFMedicament extends JInternalFrame implements ActionListener{
          pTexte.add(JTcodeFamille);
          pTexte.add(JLlibelleFamille);
          pTexte.add(JTlibelleFamille);
-		
+         
         // mise en forme de la fenetre
 
          p.add(pTexte);

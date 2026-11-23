@@ -71,72 +71,7 @@ public class JIFMedicamentsFamilles extends JInternalFrame implements ActionList
 		pSaisie.add(JCFamille);
 		p.add(pSaisie);
 		
-		/*int nbLignes= diccoMedicament.size();
-		
-		int i=0;
-		String[][] data = new String[nbLignes][6] ;
-		//for(Medicament unMedicament : lesMedicaments){
-		String[] columnNames = {"Dépôt Légal", "Nom Commercial","Composition","Effets","Contre Indications"};
-		
-		for (Map.Entry<String,Medicament> uneEntree : diccoMedicament.entrySet()){
-			data[i][0] = uneEntree.getValue().getDepotLegal();
-			data[i][1] = uneEntree.getValue().getNomCommercial();
-			data[i][2] = uneEntree.getValue().getComposition();
-			data[i][3] = uneEntree.getValue().getEffets();
-			data[i][4] = uneEntree.getValue().getContreIndication();
-			i++;
-			}
-		
-		table = new JTable(data, columnNames);
-		table.getSelectionModel().addListSelectionListener(table);*/
-		
-		JCFamille.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				diccoMedicament = MedicamentDao.selectionnerFamilleMedic(JCFamille.getSelectedItem().toString());
-				
-				String[] columnNames = {"Dépôt Légal", "Nom Commercial","Composition","Effets","Contre Indications"};
-				
-				String[][] data = null;
-				int i=0;
-				
-				if(diccoMedicament == null) {
-					int nbLignes= 1;
-					
-					data = new String[nbLignes][6] ;
-					data[i][0] = "Aucun médicament dans cette Famille.";
-					
-				}
-				else {
-					int nbLignes= diccoMedicament.size();
-					
-					data = new String[nbLignes][6] ;
-					for (Map.Entry<String,Medicament> uneEntree : diccoMedicament.entrySet()){
-						System.out.println(uneEntree.getValue().getDepotLegal());
-						data[i][0] = uneEntree.getValue().getDepotLegal();
-						data[i][1] = uneEntree.getValue().getNomCommercial();
-						data[i][2] = uneEntree.getValue().getComposition();
-						data[i][3] = uneEntree.getValue().getEffets();
-						data[i][4] = uneEntree.getValue().getContreIndication();
-						i++;
-					}
-				}
-				
-				
-				
-				
-				
-				table = new JTable(data, columnNames);
-				table.getSelectionModel().addListSelectionListener(table);
-				scrollPane.setViewportView(table);
-
-				
-				// mise en forme de la fenetre
-				Container contentPane = getContentPane();
-				contentPane.add(p);
-			}
-		});
+		JCFamille.addActionListener(this);
 		
 		scrollPane = new JScrollPane(table);
 		scrollPane.setPreferredSize(new Dimension(400, 200));
@@ -153,6 +88,45 @@ public class JIFMedicamentsFamilles extends JInternalFrame implements ActionList
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
+		
+		if(source == JCFamille) {
+			diccoMedicament = MedicamentDao.selectionnerFamilleMedic(JCFamille.getSelectedItem().toString());
+			
+			String[] columnNames = {"Dépôt Légal", "Nom Commercial","Composition","Effets","Contre Indications"};
+			
+			String[][] data = null;
+			int i=0;
+			
+			if(diccoMedicament == null) {
+				int nbLignes= 1;
+				
+				data = new String[nbLignes][6] ;
+				data[i][0] = "Aucun médicament dans cette Famille.";
+				
+			}
+			else {
+				int nbLignes= diccoMedicament.size();
+				
+				data = new String[nbLignes][6] ;
+				for (Map.Entry<String,Medicament> uneEntree : diccoMedicament.entrySet()){
+					System.out.println(uneEntree.getValue().getDepotLegal());
+					data[i][0] = uneEntree.getValue().getDepotLegal();
+					data[i][1] = uneEntree.getValue().getNomCommercial();
+					data[i][2] = uneEntree.getValue().getComposition();
+					data[i][3] = uneEntree.getValue().getEffets();
+					data[i][4] = uneEntree.getValue().getContreIndication();
+					i++;
+				}
+			}
+			
+			table = new JTable(data, columnNames);
+			table.getSelectionModel().addListSelectionListener(table);
+			scrollPane.setViewportView(table);
+
+			// mise en forme de la fenetre
+			Container contentPane = getContentPane();
+			contentPane.add(p);
+		}
    		
 	}
 	

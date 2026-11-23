@@ -86,4 +86,13 @@ public class ValidationUtils {
     	}
 	}
     
+    public static boolean verifTailleMin(String chaine, int tailleMin) {
+    	if(0 < chaine.length() && chaine.length() >= tailleMin) {
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+	}
+    
 }
