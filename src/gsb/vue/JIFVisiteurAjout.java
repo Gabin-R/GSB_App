@@ -45,12 +45,33 @@ public class JIFVisiteurAjout extends JIFVisiteur implements ActionListener{
         		
         ajouter = new JButton("Ajouter");
         
-        pTexte.add(JLcodePostal);
-        pTexte.add(JTcodePostal);
+        
+        pTexte.add(JLmatricule);
+        pTexte.add(JTmatricule);
+        pTexte.add(JLnom);
+        pTexte.add(JTnom);
+        pTexte.add(JLprenom);
+        pTexte.add(JTprenom);
         pTexte.add(JLlogin);
         pTexte.add(JTlogin);
         pTexte.add(JLmdp);
         pTexte.add(JPmdp);
+        pTexte.add(JLtelephone);
+        pTexte.add(JTtelephone);
+        pTexte.add(JLadresse);
+        pTexte.add(JTadresse);
+        pTexte.add(JLcodePostal);
+        pTexte.add(JTcodePostal);
+        pTexte.add(JLdateEntree);
+        pTexte.add(JTdateEntree);
+        pTexte.add(JLprime);
+        pTexte.add(JTprime);
+        pTexte.add(JLcodeUnite);
+        pTexte.add(JTcodeUnite);
+        pTexte.add(JLnomUnite);
+        pTexte.add(JTnomUnite);
+        
+        
         
         pBoutons.add(ajouter);
         // declaration des sources d'evenements
