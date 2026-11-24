@@ -60,14 +60,12 @@ public class VisiteurDao {
 		return diccoDesVisiteurs;
 	}
 	
-	public static int ajouterNouveauVisiteur(String unMatricule, String unNom, String unePrenom, String unLogin, String unMotDePasse, String unTelephone, String uneAdresse, String uneDateEntree, String unePrime, String unCodeUnite, String unNomUnite){
+	public static int ajouterNouveauVisiteur(String unMatricule, String unNom, String unePrenom, String unLogin, String unMotDePasse, String unTelephone, String uneAdresse, String unCodePostal, String uneDateEntree, int unePrime, String unCodeUnite, String unNomUnite){
 		String requeteInsertion;
-		ResultSet reqRecupCP = ConnexionMySql.execReqSelection("select CODEPOSTAL from LOCALITE where VILLE = '"+uneAdresse+"'");
-		String cp = reqRecupCP.getString(1); //TODO : Régler ce problème
-		requeteInsertion = "INSERT INTO VISISTEUR VALUES('"+unMatricule+"','"+unNom+"','"+unePrenom+"','"+unLogin+"','"+unMotDePasse+"','"+uneAdresse+"','"+cp+"','"+unTelephone+"','"+uneDateEntree+"','"+unePrime+"','"+unCodeUnite+"','"+unNomUnite+"')";
+		requeteInsertion = "INSERT INTO VISITEUR VALUES('"+unMatricule+"','"+unNom+"','"+unePrenom+"','"+unLogin+"','"+unMotDePasse+"','"+uneAdresse+"','"+unCodePostal+"','"+unTelephone+"','"+uneDateEntree+"','"+unePrime+"','"+unCodeUnite+"','"+unNomUnite+"')";
 		int result = ConnexionMySql.execReqMaj(requeteInsertion);
 		ConnexionMySql.fermerConnexionBd();
 		return result;
+		
 	}
-	
 }

@@ -3,9 +3,12 @@ package gsb.vue;
 import gsb.modele.Visiteur;
 
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -13,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 
 /**
  * TODO Pour changer le modeele de ce commentaire de type genere, allez :
@@ -42,12 +46,14 @@ public class JIFVisiteur extends JInternalFrame implements ActionListener{
 	protected JTextField JTprenom;
 	protected JTextField JTtelephone;
 	protected JTextField JTadresse;
-    protected JTextField JTdateEntree;
+    protected JFormattedTextField JTdateEntree;
     protected JTextField JTprime;
     protected JTextField JTcodeUnite;
     protected JTextField JTnomUnite;
     
     protected JButton JBfermer;
+    
+    DateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
 	
     public JIFVisiteur() {
     	p = new JPanel();  // panneau principal de la fenetre
@@ -59,7 +65,7 @@ public class JIFVisiteur extends JInternalFrame implements ActionListener{
          JLprenom = new JLabel("Prénom");
          JLtelephone = new JLabel("Téléphone");
          JLadresse = new JLabel("Adresse");
-         JLdateEntree = new JLabel("Date entrée");
+         JLdateEntree = new JLabel("(?) Date entrée");
          JLprime = new JLabel("Prime");
          JLcodeUnite = new JLabel("Code Unité");
          JLnomUnite = new JLabel("Nom Unité");
@@ -70,10 +76,16 @@ public class JIFVisiteur extends JInternalFrame implements ActionListener{
          JTprenom = new JTextField(20);
          JTtelephone = new JTextField(20);    
          JTadresse = new JTextField(20);
-         JTdateEntree = new JTextField(20);
+         
+         JTdateEntree = new JFormattedTextField(formatDate);
+         JTdateEntree.setColumns(10);
+         
          JTprime = new JTextField(20);
          JTcodeUnite = new JTextField(20);
          JTnomUnite = new JTextField(20);
+         
+         JLdateEntree.setToolTipText("Sous le format : AAAA-MM-DD");
+         JLdateEntree.setCursor(new Cursor(Cursor.HAND_CURSOR));
          
          pTexte.add(JLmatricule);
          pTexte.add(JTmatricule);
